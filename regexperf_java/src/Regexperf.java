@@ -12,7 +12,7 @@ public class Regexperf {
             int matched = 0;
             long startTime = 0;
             int lineCount = lines.size();
-            int total = lineCount * 10;
+            int total = lineCount * 20;
             for (int i = 0; i < total; i++) {
                 if (i == lineCount) { // Give the JIT a chance to optimize before timing
                     startTime = System.nanoTime();
@@ -21,8 +21,9 @@ public class Regexperf {
                     matched++;
                 }
             }
-            long time = (System.nanoTime() - startTime) / 1000000;
-            System.out.format("%s out of %s lines matched, timing %s millis\n", matched, total, time);
+            long time = System.nanoTime() - startTime;
+            System.out.format("%s out of %s lines matched, timing %s ms (%s ns per match)\n",
+                    matched, total, time / 1000000, (time / (total - lineCount)));
         } catch (IOException e) {
             e.printStackTrace();
         }

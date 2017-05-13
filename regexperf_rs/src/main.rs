@@ -1,6 +1,7 @@
 extern crate regex;
+extern crate time;
 
-use std::time::Instant;
+use time::precise_time_ns;
 use regex::RegexBuilder;
 use std::io::BufReader;
 use std::io::BufRead;
@@ -16,15 +17,16 @@ fn main() {
         .lines()
         .map(|l| l.expect("I/O error"))
         .collect();
-    let mut start_instant: Option<Instant> = None;
+    let mut start_time = 0;
     let mut matched: usize = 0;
     let line_count = lines.len();
-    let total = line_count * 10;
+    let total = line_count * 20;
     for i in 0..total {
         if i == line_count {    // Make measurement same as Java
-            start_instant = Some(Instant::now())
+            start_time = precise_time_ns();
         }
         matched += if regex.clone().is_match(&lines[i % line_count]) { 1 } else { 0 };
     }
-    println!("{} out of {} lines matched, timing {} millis\n", matched, total, start_instant.unwrap().elapsed().subsec_nanos() / 1000000)
+    let elapsed = precise_time_ns() - start_time;
+    println!("{} out of {} lines matched, timing {} ms ({} ns per match)", matched, total, elapsed / 1000000, elapsed / ((total-line_count) as u64))
 }
