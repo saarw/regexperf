@@ -11,7 +11,10 @@ The program reads a text file into memory and runs through the file 20 times wit
 - Compile Rust, inside regexperf_rs ```cargo build --release```
 - Run Rust, inside regexperf_rs ```./target/release/regexperf_rs ~/Downloads/big.txt```
 
-## Results on 2-core Macbook Pro
+## Results on OSX (2-core Macbook Pro)
 Java ```864340 out of 2569140 lines matched, timing 1636 ms (670 ns per match)```   
 Rust ```864340 out of 2569140 lines matched, timing 11677 ms (4784 ns per match)```
 
+## Results on Windows 10 (Dell XPS 15 9550)
+Java ```864340 out of 2569140 lines matched, timing 1472 ms (603 ns per match)```   
+Rust ```864340 out of 2569140 lines matched, timing 13585 ms (5566 ns per match)```
