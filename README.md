@@ -13,7 +13,7 @@ The program reads a text file into memory and runs through the file 20 times wit
 
 ## Results on OSX (2-core Macbook Pro)
 Java ```864340 out of 2569140 lines matched, timing 1636 ms (670 ns per match)```   
-Rust ```864340 out of 2569140 lines matched, timing 11677 ms (4784 ns per match)```
+Rust ```864340 out of 2569140 lines matched, timing 11677 ms (4784 ns per match)```   
 Rust with batch sizes specified   
 ```864340 out of 2569140 lines matched, with batch size 10, timing 5498 ms (2252 ns per match)```
 ```864340 out of 2569140 lines matched, with batch size 100, timing 4073 ms (1668 ns per match)``
