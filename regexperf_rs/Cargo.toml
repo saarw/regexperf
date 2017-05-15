@@ -4,5 +4,5 @@ version = "0.1.0"
 authors = ["William Saar <william@saar.se>"]
 
 [dependencies]
-regex = "0.2.1"
+regex = { git = "https://github.com/saarw/regex", branch = "threadunsafe-perf" }
 time = "0.1.37"
